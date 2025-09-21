@@ -70,10 +70,4 @@ def build_app():
 
 if __name__ == "__main__":
     app = build_app()
-    webhook_url = f"{PUBLIC_URL}/{BOT_TOKEN}" if PUBLIC_URL else None
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path=BOT_TOKEN,
-        webhook_url=webhook_url,
-    )
+    app.run_polling(drop_pending_updates=True)
